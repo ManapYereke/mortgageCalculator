@@ -26,6 +26,9 @@ html {
 .article {
   display: flex;
   text-align: left;
+  width: 80%;
+  position: relative;
+  left: 10%;
 }
 /*текст*/
 .circle {
@@ -85,21 +88,15 @@ h1 {
 
 /*калькулятор*/
 .calculator {
-  max-height: 90vh;
   transition: transform 0.3s;
 }
 .title {
   position: relative;
   display: flex;
-  left: 8%;
+  left: 10%;
   max-width: 80%;
   align-items: center;
   text-align: left;
-}
-
-.title .title {
-  display: inline-block;
-  left: 0;
 }
 
 .title-circle {
@@ -135,6 +132,11 @@ circle:active,
   width: 86%;
   border-radius: 4.1rem;
   text-align: left;
+}
+
+.container-fluid {
+  position: relative;
+  top: 80px;
 }
 
 .background {
@@ -439,19 +441,19 @@ circle:active,
 /*уникальные стили для СВБР*/
 .svbr,
 .svbr-btn {
-  background-color: #d0c7ff;
+  background-color: #20B2AA;
 }
 
 .svbr-btn:hover {
-  background-color: #d0b7ff;
+  background-color: #20A2AA;
 }
 
 .svbr-btn:active {
-  background-color: #d0a7ff;
+  background-color: #2092AA;
 }
 
 .svbr-brd {
-  border: 7px solid #d0c7ff;
+  border: 7px solid #20B2AA;
 }
 
 /*уникальные стили для свур*/

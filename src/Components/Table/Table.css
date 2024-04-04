@@ -1,0 +1,30 @@
+.table-container {
+    width: 86%;
+    position: relative;
+    left: 7%;
+    padding-bottom: 50px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .table th {
+    background-color: #20B2AA;
+    color: #fff;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table tr:hover {
+    background-color: #f2f2f2;
+  }

@@ -7,12 +7,14 @@ i18n
     resources: {
       kk: {
         translation: {
+          'title': 'Ипотекалық калькулятор',
+          'article': '  Ипотекалық калькулятор – тұрғын үйге қатысты несие бойынша төлемдер мен артық төлемді есептеуге мүмкіндік беретін әмбебап құрал. Ай сайынғы төлемдердің болжамды мөлшерін алдын-ала есептеу және сіздің қаржылық мүмкіндіктеріңізді бағалау арқылы банктен несие алу тиімді әрі ыңғайлы. Ипотекалық калькулятор арқылы несие беру бағдарламалары мен жылдық сыйақы мөлшерлемелерін салыстырып, несие шарттарын алдын-ала бағалай аласыз.',
           'price': 'Жылжымайтын мүліктің құны(тг):',
           'initialFee': 'Бастапқы жарна(тг):',
           'term': 'Ипотека мерзімі: ',
           'month': 'ай',
           "year": "ж",
-          'interest rate': 'Пайыздық мөлшерлеме(%)',
+          'interest rate': 'Пайыздық мөлшерлеме(%):',
           'payment type': 'Төлем түрі: ',
           'annuity': "аннуитеттік",
           "differentiated": "дифференциалдық",
@@ -24,14 +26,18 @@ i18n
           'over payment': 'Артық төлемнің сомасы:',
           'tenge': 'теңге',
           'warning': 'Есептеу шамамен алынған, сіз енгізген деректерге негізделген және заңды күші жоқ',
+          'caption': 'Төлемдер кестесі',
           'stage': 'Кезең',
           'main debt': 'Негізгі қарыз',
           'percently part': 'Есептелген пайыз',
-          'remaning amount': 'Негізгі қарыздың қалғаны'
+          'remaning amount': 'Негізгі қарыздың қалғаны',
+          'total': 'Жалпы'
         }
       },
       ru: {
         translation: {
+          'title': 'Калькулятор ипотеки',
+          'article': '  Ипотечный калькулятор – универсальный инструмент, позволяющий рассчитать платежи и переплаты по жилищному кредиту. Получить кредит в банке выгодно и удобно, предварительно рассчитав предполагаемую сумму ежемесячных платежей и оценив свои финансовые возможности. С помощью ипотечного калькулятора вы можете сравнить кредитные программы и годовые процентные ставки, а также заранее оценить условия кредита.',
           'price': 'Стоимость недвижимости(тг):',
           'initialFee': 'Первоначальный взнос(тг):',
           'term': 'Срок ипотеки: ',
@@ -48,18 +54,42 @@ i18n
           'to return': 'К возврату:',
           'over payment': 'Сумма переплаты:',
           'tenge': 'тенге',
-          'warning': 'Расчет является примерным, основывается на введенных вами данных и юридической силы не имеет'
+          'warning': 'Расчет является примерным, основывается на введенных вами данных и юридической силы не имеет',
+          'caption': 'Таблица платежей',
+          'stage': 'Этап',
+          'main debt': 'Основная часть',
+          'percently part': 'Процентная часть',
+          'remaning amount': 'Остаток основного долга',
+          'total': 'Итого'
         }
       },
       en: {
         translation: {
-          'price': 'Жылжымайтын мүліктің құны(тг):',
-          'initialFee': 'Бастапқы жарна(тг):',
-          'term': 'Ипотека мерзімі: ',
-          'month': 'ай',
-          'interest rate': 'Пайыздық мөлшерлеме(%)',
-          'calculate': 'Есептеу',
-          'result': 'Есептеу нәтижесі'
+          'title': 'Mortgage calculator',
+          'article': '  A mortgage calculator is a universal tool that allows you to calculate payments and overpayments on a home loan. It is profitable and convenient to get a loan from a bank by first calculating the expected amount of monthly payments and assessing your financial capabilities. Using a mortgage calculator, you can compare loan programs and annual interest rates, as well as evaluate loan terms in advance.',
+          'price': 'Property cost (tg):',
+          'initialFee': 'Down payment():',
+          'term': 'Mortgage term: ',
+          'month': 'month',
+          "year": "y",
+          'interest rate': 'Interest rate(%)',
+          'payment type': 'Payment type: ',
+          'annuity': "annuity",
+          "differentiated": "differentiated",
+          'calculate': 'Calculate',
+          'result': 'Calculation results',
+          'credit sum': 'Amount of credit:',
+          'monthly payment': 'Monthly payment:',
+          'to return': 'To return:',
+          'over payment': 'Overpayment amount:',
+          'tenge': 'tenge',
+          'warning': 'The calculation is approximate, based on the data you entered and has no legal force',
+          'caption': 'Payment table',
+          'stage': 'Stage',
+          'main debt': 'Main part',
+          'percently part': 'Percentage part',
+          'remaning amount': 'Principal balance',
+          'total': 'Total'
         }
       },
     },

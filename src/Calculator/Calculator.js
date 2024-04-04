@@ -10,6 +10,7 @@ import CustomInput from '../Custom/CustomInput';
 import Tooltip from '../Tooltip/Tooltip';
 import Header from '../Components/Header/Header';
 import Table from '../Components/Table/Table';
+import Article from '../Components/Article/Article';
 
 const Calculator = () => {
     const { t } = useTranslation();
@@ -28,6 +29,7 @@ const Calculator = () => {
     const [monthlyDebtRepayment, setMonthlyDebtRepayment] = useState(0);
 
     const [rows, setRows] = useState([]);
+    const [tfoot, setTfoot] = useState([]);
     const columns = [t('stage'), t('monthly payment'), t('main debt'), t('percently part'), t('remaning amount')];
 
     useEffect(()=>{
@@ -36,7 +38,7 @@ const Calculator = () => {
     }, [housePrice, initialFee, percents]);
 
     useEffect(()=>{
-        setMonthlyDebtRepayment(creditSum / months);
+        setMonthlyDebtRepayment(Math.round(creditSum / months));
     }, [creditSum, months]);
 
     const calculate = () => {
@@ -50,7 +52,7 @@ const Calculator = () => {
 
     const calculateAnnuityPayment = () => {
         const totalRate = Math.pow(1 + monthlyRate, months);
-        const monthlyPayment = creditSum * monthlyRate * totalRate / (totalRate - 1);
+        const monthlyPayment = Math.round(creditSum * monthlyRate * totalRate / (totalRate - 1));
         const overPayment = monthlyPayment * months;
         return {
             creditSum,
@@ -62,8 +64,8 @@ const Calculator = () => {
     const calculateDifferentiatedPayment = () => {
         return{
             creditSum,
-            startMonthPayment: monthlyDebtRepayment + calculatePercentagePart(creditSum),
-            endMonthPayment: monthlyDebtRepayment,
+            startMonthPayment: Math.round(monthlyDebtRepayment + calculatePercentagePart(creditSum)),
+            endMonthPayment: Math.round(monthlyDebtRepayment),
             overPayment: calculateDifferentiatedOverPayment()
         }
     }
@@ -73,15 +75,18 @@ const Calculator = () => {
         let sum = 0;
         let balanceOwed = creditSum;
         let i = 1;
+        let monthlyDebtPayment = monthlyDebtRepayment;
         while(balanceOwed > 0) {
-            const percentagePart = calculatePercentagePart(balanceOwed);
-            const monthlyPayment = percentagePart + monthlyDebtRepayment;
+            const percentagePart = Math.round(calculatePercentagePart(balanceOwed));
+            if(monthlyDebtPayment > balanceOwed)
+                monthlyDebtPayment = balanceOwed;
+            const monthlyPayment = percentagePart + monthlyDebtPayment;
             sum += monthlyPayment;
-            balanceOwed -= monthlyDebtRepayment;
-            rows.push([i, monthlyPayment, monthlyDebtRepayment, percentagePart, balanceOwed]);
-        
+            balanceOwed -= monthlyDebtPayment;
+            rows.push([i, monthlyPayment.toLocaleString(), monthlyDebtPayment.toLocaleString(), percentagePart.toLocaleString(), balanceOwed.toLocaleString()]);
             i ++;
         }
+        setTfoot([t('total'), sum.toLocaleString(), creditSum.toLocaleString(), (sum - creditSum).toLocaleString(), '-'])
         setRows(rows);
         return sum;
     }
@@ -90,15 +95,18 @@ const Calculator = () => {
         const rows = [];
         let balanceOwed = creditSum;
         let i = 1;
-        const monthlyPayment = calculateAnnuityPayment().monthlyPayment;
+        const annuityPayment = calculateAnnuityPayment();
+        let monthlyPayment = annuityPayment.monthlyPayment;
         while(balanceOwed > 0) {
-            const percentagePart = calculatePercentagePart(balanceOwed);
+            const percentagePart = Math.round(calculatePercentagePart(balanceOwed));
+            if(monthlyPayment - percentagePart > balanceOwed)
+                monthlyPayment = balanceOwed + percentagePart;
             const monthlyDebtPayment = monthlyPayment - percentagePart;
             balanceOwed -= monthlyDebtPayment;
-            rows.push([i, monthlyPayment, monthlyDebtPayment, percentagePart, balanceOwed]);
-            //setRows([...rows, [i, monthlyPayment, monthlyDebtPayment, percentagePart, balanceOwed]])
+            rows.push([i, monthlyPayment.toLocaleString(), monthlyDebtPayment.toLocaleString(), percentagePart.toLocaleString(), balanceOwed.toLocaleString()]);
             i ++;
         }
+        setTfoot([t('total'), annuityPayment.overPayment.toLocaleString(), creditSum.toLocaleString(), (annuityPayment.overPayment - creditSum).toLocaleString(), '-'])
         setRows(rows);
     }
 
@@ -109,13 +117,8 @@ const Calculator = () => {
     return (
         <div>
             <Header/>
-            <div>
-                <CalculatorTitle
-                    title={'Расчет ипотеки'}
-                    isCalculatorVisible={isCalculatorVisible}
-                    setIsCalculatorVisible={setIsCalculatorVisible}
-                    color={'svbr'} />
-                <br />
+            <div className="container-fluid">
+                <Article article={t("article")} title={t('title')}/>
                 {isCalculatorVisible === true && (
                     <div className='calculator'>
                         <div className="background container svbr"></div>
@@ -179,8 +182,10 @@ const Calculator = () => {
                         </div>
                     </div>
                 )}
+            {rows.length > 0 &&(
+                <Table rows={rows} columns={columns} tfoot={tfoot}/>
+            )}
             </div>
-            <Table rows={rows} columns={columns} />
         </div>
     );
 };

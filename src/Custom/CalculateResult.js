@@ -18,7 +18,7 @@ const CalculateResult = ({ result}) => {
                             <div className="semibold">{t("credit sum")}</div>
                             <div className="normal">{result.creditSum.toLocaleString()} {t("tenge")}</div>
                             <br/>
-                            <div className="semibold">{t("monthly payment")}:</div>
+                            <div className="semibold">{t("monthly payment")}</div>
                             <div className="normal">{result.monthlyPayment ? result.monthlyPayment.toLocaleString() : `от ${result.startMonthPayment.toLocaleString()} до ${result.endMonthPayment.toLocaleString()}`} {t("tenge")}</div>
                             <br />
                             <div className="semibold">{t("to return")}</div>
