@@ -353,6 +353,10 @@ circle:active,
   color: #dc3545;
 }
 
+.error{
+  color: #dc3545;
+}
+
 /*адаптивность*/
 @media (max-width: 1500px) {
   html {
@@ -456,77 +460,6 @@ circle:active,
   border: 7px solid #20B2AA;
 }
 
-/*уникальные стили для свур*/
-.svur,
-.svur-btn {
-  background-color: #e8b6ae;
-}
-
-.svur-btn:hover {
-  background-color: #e8a6ae;
-}
-
-.svur-btn:active {
-  background-color: #e896ae;
-}
-
-.svur-brd {
-  border: 7px solid #e8b6ae;
-}
-
-/*уникальные стили для свпк*/
-.svpk,
-.svpk-btn {
-  background-color: #e5e5fd;
-}
-
-.svpk-btn:hover {
-  background-color: #e5d5fd;
-}
-
-.svpk-btn:active {
-  background-color: #e5c5fd;
-}
-
-.svpk-brd {
-  border: 7px solid #e5e5fd;
-}
-
-/*уникальные стили для солидарной пенсии*/
-.joint,
-.joint-btn {
-  background-color: #fddd86;
-}
-
-.joint-btn:hover {
-  background-color: #fdcd86;
-}
-
-.joint-btn:active {
-  background-color: #fdbd86;
-}
-
-.joint-brd {
-  border: 7px solid #fddd86;
-}
-
-/*уникальные стили для enpf*/
-.enpf,
-.enpf-btn {
-  background-color: #8fb7f4;
-}
-
-.enpf-btn:hover {
-  background-color: #8fa7f4;
-}
-
-.enpf-btn:active {
-  background-color: #8f97f4;
-}
-
-.enpf-brd {
-  border: 7px solid #8fb7f4;
-}
 .tooltip-container {
   position: relative;
   display: inline-block;

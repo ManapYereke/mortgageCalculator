@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const MonthSlider = ({ label, months, 
-    setMonths, type }) => {
+    setMonths, type, warning }) => {
     const { t } = useTranslation();
     const rangeTrackRef = useRef(null);
     const rangeThumbRef = useRef(null);
@@ -76,6 +76,9 @@ const MonthSlider = ({ label, months,
                 <div className="label-tg">15 {t("year")}</div>
                 <div className="label-tg">20 {t("year")}</div>
                 <div className="label-tg">25 {t("year")}</div>
+            </div>
+            <div className="error">
+                {warning ? warning : <br/>}
             </div>
         </div>
     );
